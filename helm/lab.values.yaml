@@ -6,6 +6,7 @@ global:
   hosts:
     domain: local.gitlab.com      # Use a local domain name; ensure this resolves to your cluster’s IP
     https: false                  # Disable HTTPS for this demo setup
+    ssh: gitlab.local.gitlab.com
   email:
     from: 'no-reply@yukaringermany.com'
     displayName: 'Your Company Name'
