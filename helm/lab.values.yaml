@@ -107,5 +107,7 @@ postgresql:
       memory: 512Mi
 
 gitlab-runner:
-  install: false
+  install: true
 
+prometheus:
+  install: false
