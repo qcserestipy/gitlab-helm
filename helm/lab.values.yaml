@@ -79,6 +79,7 @@ nginx-ingress:
     service:
       enabled: true
       type: ClusterIP
+      externalTrafficPolicy: ""
 
 registry:
   storage: {}
