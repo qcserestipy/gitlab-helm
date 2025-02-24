@@ -107,12 +107,12 @@ postgresql:
       memory: 512Mi
 
 gitlab-runner:
-  gitlabUrl: "http://gitlab-webservice.gitlab.svc.cluster.local"
+  gitlabUrl: "http://gitlab-webservice-default.gitlab.svc.cluster.local"
   runners:
     config: |
       [[runners]]
         name = "kind-runner"
-        url = "http://gitlab-webservice.gitlab.svc.cluster.local"
+        url = "http://gitlab-webservice-default.gitlab.svc.cluster.local"
         token = "glrt-t2_UASwDaBHz_x4kmwewQqq"
         executor = "kubernetes"
 
