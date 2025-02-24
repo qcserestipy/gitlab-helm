@@ -119,6 +119,11 @@ gitlab-runner:
         url = "http://gitlab-webservice-default.gitlab.svc.cluster.local:8080"
         token = "glrt-t2_UASwDaBHz_x4kmwewQqq"
         executor = "kubernetes"
+        [runners.kubernetes]
+          host_aliases = [
+            { ip = "10.96.25.70", hostnames = ["gitlab.local.gitlab.com"] }
+          ]
+
 
 prometheus:
   install: false
