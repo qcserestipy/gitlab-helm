@@ -1,6 +1,9 @@
 certmanager-issuer:
   email: me@example.com
 
+upgradeCheck:
+  enabled: false
+
 global:
   edition: ce
   hosts:
