@@ -107,7 +107,13 @@ postgresql:
       memory: 512Mi
 
 gitlab-runner:
-  install: true
+  runners:
+    config: |
+      [[runners]]
+        name = "kind-runner"
+        url = "http://gitlab-webservice.gitlab.svc.cluster.local"
+        token = "glrt-t2_UASwDaBHz_x4kmwewQqq"
+        executor = "kubernetes"
 
 prometheus:
   install: false
