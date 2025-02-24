@@ -74,6 +74,7 @@ nginx-ingress:
   controller:
     kind: Deployment           # Use Deployment instead of DaemonSet for lower resource usage
     nodeSelector: {}
+    type: ClusterIP
 
 registry:
   storage: {}
