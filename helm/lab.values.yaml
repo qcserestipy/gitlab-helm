@@ -116,6 +116,7 @@ gitlab-runner:
   runners:
     config: |
       [[runners]]
+        tls_skip_verify = true
         name = "kind-runner"
         url = "http://gitlab.local.gitlab.com" 
         clone_url = "http://gitlab.local.gitlab.com"  
