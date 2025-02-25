@@ -10,10 +10,6 @@ global:
     domain: local.gitlab.com      # Use a local domain name; ensure this resolves to your cluster’s IP
     https: false                  # Disable HTTPS for this demo setup
     ssh: gitlab.local.gitlab.com
-#    gitlab:
-#      name: gitlab-webservice-default  # This tells GitLab to use the service name
-#      https: false
-#      servicePort: 8080
   email:
     from: 'no-reply@yukaringermany.com'
     displayName: 'Your Company Name'
@@ -111,8 +107,10 @@ postgresql:
       memory: 512Mi
 
 gitlab-runner:
-  gitlabUrl: "http://gitlab-webservice-default.gitlab.svc.cluster.local:8080"
-  certSecretName: gitlab-gitlab-tls
+  gitlabUrl: "http://gitlab.local.gitlab.com"
+#"http://gitlab-webservice-default.gitlab.svc.cluster.local:8080"
+  #certSecretName: gitlab-gitlab-tls
+  certsSecretName: gitlab-cert-name  
   runners:
     config: |
       [[runners]]
