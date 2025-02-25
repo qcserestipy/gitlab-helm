@@ -111,8 +111,7 @@ postgresql:
       memory: 512Mi
 
 gitlab-runner:
-  gitlabUrl: "http://gitlab.local.gitlab.com" 
-#"http://gitlab-webservice-default.gitlab.svc.cluster.local:8080"
+  gitlabUrl: "http://gitlab-webservice-default.gitlab.svc.cluster.local:8080"
   runners:
     config: |
       [[runners]]
