@@ -113,10 +113,8 @@ postgresql:
 gitlab-runner:
   gitlabUrl: "http://gitlab.local.gitlab.com"
 #"http://gitlab-webservice-default.gitlab.svc.cluster.local:8080"
+  certSecretName: gitlab-gitlab-tls
   runners:
-    env:
-      - name: GIT_SSL_NO_VERIFY
-        value: "true"
     config: |
       [[runners]]
         name = "kind-runner"
