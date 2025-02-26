@@ -1,0 +1,15 @@
+
+gitlabUrl: "http://gitlab.local.gitlab.com"
+certsSecretName: gitlab-cert-name 
+runnerToken: "glrt-t2_6-nAamB16yVNvXjWoEPR"
+runners:
+  config: |
+    [[runners]]
+      name = "kind-runner"
+      url = "http://gitlab.local.gitlab.com" 
+      executor = "kubernetes"
+      [runners.kubernetes]
+        namespace = "{{.Release.Namespace}}"
+        host_aliases = [
+          { ip = "10.96.25.70", hostnames = ["gitlab.local.gitlab.com"] }
+        ]

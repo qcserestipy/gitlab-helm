@@ -107,6 +107,7 @@ postgresql:
       memory: 512Mi
 
 gitlab-runner:
+  install: false
   gitlabUrl: "http://gitlab.local.gitlab.com"
 #"http://gitlab-webservice-default.gitlab.svc.cluster.local:8080"
   #certSecretName: gitlab-gitlab-tls
