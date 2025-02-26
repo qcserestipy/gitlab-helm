@@ -2,6 +2,28 @@
 gitlabUrl: "http://gitlab.local.gitlab.com"
 certsSecretName: gitlab-cert-name 
 runnerToken: "glrt-t2_6-nAamB16yVNvXjWoEPR"
+rbac:
+  create: true
+  serviceAccountName: gitlab-runner
+  rules:
+    - resources: ["events"]
+      verbs: ["list", "watch"]
+    - resources: ["namespaces"]
+      verbs: ["create", "delete"]
+    - resources: ["pods"]
+      verbs: ["create", "delete", "get"]
+    - apiGroups: [""]
+      resources: ["pods/attach", "pods/exec"]
+      verbs: ["get", "create", "patch", "delete"]
+    - apiGroups: [""]
+      resources: ["pods/log"]
+      verbs: ["get", "list"]
+    - resources: ["secrets"]
+      verbs: ["create", "delete", "get", "update"]
+    - resources: ["serviceaccounts"]
+      verbs: ["get"]
+    - resources: ["services"]
+      verbs: ["create", "get"]
 runners:
   config: |
     [[runners]]
