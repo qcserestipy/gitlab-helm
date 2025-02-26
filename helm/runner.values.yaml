@@ -30,7 +30,7 @@ runners:
       name = "kind-runner"
       url = "https://gitlab.local.gitlab.com/"
       executor = "kubernetes"
-      clone_url = "https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.local.gitlab.com/"
+      # clone_url = "https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.local.gitlab.com/"
       [runners.kubernetes]
         namespace = "{{.Release.Namespace}}"
         helper_image = "registry.gitlab.com/gitlab-org/gitlab-runner/gitlab-runner-helper:arm64-v17.9.0"
