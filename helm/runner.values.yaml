@@ -33,6 +33,3 @@ runners:
       [runners.kubernetes]
         namespace = "{{.Release.Namespace}}"
         helper_image = "registry.gitlab.com/gitlab-org/gitlab-runner/gitlab-runner-helper:arm64-v17.9.0"
-        host_aliases = [
-          { ip = "10.96.25.70", hostnames = ["gitlab.local.gitlab.com"] }
-        ]
