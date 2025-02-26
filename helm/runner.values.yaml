@@ -1,5 +1,5 @@
 
-gitlabUrl: "http://gitlab.local.gitlab.com/"
+gitlabUrl: "https://gitlab.local.gitlab.com/"
 certsSecretName: gitlab-cert-name 
 runnerToken: "glrt-t2_6-nAamB16yVNvXjWoEPR"
 rbac:
@@ -28,7 +28,7 @@ runners:
   config: |
     [[runners]]
       name = "kind-runner"
-      url = "http://gitlab.local.gitlab.com/"
+      url = "https://gitlab.local.gitlab.com/"
       executor = "kubernetes"
       clone_url = "https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.local.gitlab.com/"
       [runners.kubernetes]
