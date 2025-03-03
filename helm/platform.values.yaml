@@ -1,0 +1,99 @@
+certmanager-issuer:
+  email: info@devplatformsolutions.com
+
+upgradeCheck:
+  enabled: false
+
+global:
+  edition: ce
+  hosts:
+    domain: devplatformsolutions.com      # Use a local domain name; ensure this resolves to your cluster’s IP
+    https: true                  # Disable HTTPS for this demo setup
+    ssh: gitlab.devplatformsolutions.com
+
+gitlab:
+  webservice:
+    # Minimal replica count for low-resource setup
+    maxReplicas: 2
+    minReplicas: 1
+    resources:
+      limits:
+        memory: 2G              # Limit memory usage to ~1GB
+      requests:
+        cpu: "250m"             # Request 0.25 CPU
+        memory: 512Mi           # Request ~512Mi memory
+    workerProcesses: 4          # Only one web worker process
+    hpa:
+      cpu:
+        targetAverageValue: "500m"  # Lower HPA target for minimal load
+    ingress:
+      enabled: true
+      proxyBodySize: 0          # Allow large uploads if needed
+      hosts:
+        - name: "devplatformsolutions.com"
+          paths:
+            - /
+          tls: true            # Disable TLS on ingress
+      tls:
+        secretName: "gitlab-tls"
+        hosts: ["gitlab.devplatformsolutions.com"]
+    nodeSelector: {}            # Allow scheduling anywhere (remove if you have dedicated nodes)
+     
+  sidekiq:
+    maxReplicas: 1
+    minReplicas: 1
+    resources:
+      limits:
+        memory: 1024Mi           # Lower memory limit for background jobs
+      requests:
+        cpu: "200m"
+        memory: 256Mi
+    nodeSelector: {}
+
+  toolbox:
+    backups:
+      objectStorage: {}
+
+  migrations:
+    psql:
+      host: gitlab-postgresql    # Use the PostgreSQL service provided by the chart
+      password:
+        secret: gitlab-postgresql-password
+        key: postgresql-password 
+      port: 5432
+
+nginx-ingress:
+  controller:
+    kind: Deployment           # Use Deployment instead of DaemonSet for lower resource usage
+      #internal:
+      #enabled: true
+    service:
+      enabled: true
+      type: LoadBalancer
+
+registry:
+  storage: {}
+
+redis:
+  install: true
+  # Optional: Scale down Redis to reduce resource usage
+  resources:
+    limits:
+      memory: 256Mi
+    requests:
+      memory: 128Mi
+
+postgresql:
+  install: true
+  # Optional: Scale down PostgreSQL resource usage
+  resources:
+    limits:
+      memory: 1G
+    requests:
+      memory: 512Mi
+
+gitlab-runner:
+  install: false
+ 
+prometheus:
+  install: false
