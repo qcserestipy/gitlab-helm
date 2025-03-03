@@ -31,7 +31,7 @@ runners:
     [[runners]]
       name = "kind-runner"
       url = "https://gitlab.devplatformsolutions.com"
-#"https://gitlab.local.gitlab.com/"
+      #"https://gitlab.local.gitlab.com/"
       executor = "kubernetes"
       [runners.kubernetes]
         namespace = "{{.Release.Namespace}}"
