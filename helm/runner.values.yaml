@@ -1,7 +1,8 @@
 
 gitlabUrl: "https://gitlab.devplatformsolutions.com"
 #"https://gitlab.local.gitlab.com/"
-#certsSecretName: gitlab-cert-name 
+certsSecretName: gitlab-dev-platform
+#gitlab-cert-name 
 runnerToken: "glrt-t2_AtzLCrZ57yc1QitirBxc"
 #"glrt-t2_6-nAamB16yVNvXjWoEPR"
 rbac:
