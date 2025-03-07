@@ -4,7 +4,16 @@ certmanager-issuer:
 upgradeCheck:
   enabled: false
 
+
 global:
+  psql:
+    host: postgresql              # Adjust to match your PostgreSQL service name (e.g., "postgresql" or an external DNS name)
+    port: 5432
+    database: gitlabhq_production # Ensure this database exists and is empty
+    username: postgres        # Replace with your actual database username
+    password:
+      secret: postgresql-password
+      key: postgres-password      # The key within the secret that holds the database password
   edition: ce
   hosts:
     domain: local.gitlab.com      # Use a local domain name; ensure this resolves to your cluster’s IP
@@ -98,7 +107,7 @@ redis:
       memory: 128Mi
 
 postgresql:
-  install: true
+  install: false
   # Optional: Scale down PostgreSQL resource usage
   resources:
     limits:
