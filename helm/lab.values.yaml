@@ -80,6 +80,7 @@ gitlab:
       host: postgresql.psql.svc.cluster.local
       port: 5432
       serviceName: postgresql
+      username: postgres
       password:
         secret: postgresql-password
         key: postgres-password
