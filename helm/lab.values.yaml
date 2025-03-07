@@ -77,11 +77,12 @@ gitlab:
 
   migrations:
     psql:
-      host: gitlab-postgresql    # Use the PostgreSQL service provided by the chart
-      password:
-        secret: gitlab-postgresql-password
-        key: postgresql-password 
+      host: postgresql.psql.svc.cluster.local
       port: 5432
+      serviceName: postgresql
+      password:
+        secret: postgresql-password
+        key: postgres-password
 
 nginx-ingress:
   controller:
