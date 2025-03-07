@@ -7,7 +7,7 @@ upgradeCheck:
 
 global:
   psql:
-    host: postgresql              # Adjust to match your PostgreSQL service name (e.g., "postgresql" or an external DNS name)
+    host: postgresql.psql.svc.cluster.local              # Adjust to match your PostgreSQL service name (e.g., "postgresql" or an external DNS name)
     port: 5432
     database: gitlabhq_production # Ensure this database exists and is empty
     username: postgres        # Replace with your actual database username
