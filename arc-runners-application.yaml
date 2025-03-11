@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: arc-runner-scale-set
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  sources:
+    - repoURL: 'oci://ghcr.io/actions/actions-runner-controller-charts'
+      chart: gha-runner-scale-set-controller
+      targetRevision: 0.10.1
+    - repoURL: 'oci://ghcr.io/actions/actions-runner-controller-charts'
+      chart: gha-runner-scale-set
+      targetRevision: 0.10.1
+      helm:
+        valueFiles:
+          - $values/helm/arc.values.yaml
+    - repoURL: 'https://github.com/qcserestipy/gitlab-helm.git'
+      targetRevision: HEAD
+      ref: values
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: arc-runners
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
