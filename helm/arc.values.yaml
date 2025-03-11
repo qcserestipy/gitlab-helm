@@ -287,12 +287,12 @@ githubConfigUrl: "https://github.com/devplatformsolutions"
 githubConfigSecret: pre-defined-secret
 
 maxRunners: 5
-minRunners: 1
+minRunners: 0
 runnerGroup: "group"
 
 # Set container mode to dind for Docker-in-Docker support
-containerMode:
-  type: dind
+# containerMode:
+#   type: dind
 
 template:
   spec:
