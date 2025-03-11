@@ -284,6 +284,10 @@ githubConfigUrl: "https://github.com/devplatformsolutions"
 # Use a pre-defined secret (or adjust as needed for PAT or GitHub App)
 githubConfigSecret: pre-defined-secret
 
+controllerServiceAccount:
+  namespace: arc-runners
+  name: gha-runner-scale-set-controller-gha-rs-controller
+
 maxRunners: 5
 minRunners: 1
 runnerGroup: "group"
